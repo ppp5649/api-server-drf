@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Apps in Project
     "user",
+    "money_book",
     # DRF
     "rest_framework",
     "rest_framework_simplejwt",
@@ -148,9 +149,12 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 
 # Authentication Method - JTW Token
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
+    "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
-    )
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
 }
 
 # Additional JWT Settings
